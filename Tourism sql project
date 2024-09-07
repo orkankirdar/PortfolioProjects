@@ -1,0 +1,100 @@
+SELECT * FROM `tourism_dataset`; 
+
+
+SELECT DISTINCT Category FROM tourism_dataset; 
+ 
+
+SELECT DISTINCT Country FROM tourism_dataset; 
+
+
+SELECT * FROM tourism_dataset WHERE Category = 'Beach'; 
+
+
+SELECT * 
+FROM tourism_dataset 
+WHERE Category = 'Adventure' 
+  AND Rating > 3
+ORDER BY Rating DESC; 
+
+
+
+SELECT * 
+FROM tourism_dataset 
+WHERE Category = 'Historical'
+  AND Rating BETWEEN 4 AND 5 
+  AND Accommodation_Available = 'Yes'
+ORDER BY Rating DESC; 
+
+
+
+SELECT * 
+FROM tourism_dataset
+WHERE Country = 'USA'
+  And Category = 'Beach'
+  AND Revenue >= 500000
+  AND Accommodation_Available = 'Yes'
+ORDER BY Revenue DESC; 
+
+
+
+SELECT Category, COUNT(*) AS NumberOfRecords
+FROM tourism_dataset
+GROUP BY Category; 
+
+
+
+SELECT Category, SUM(Visitors) AS TotalVisitors
+FROM tourism_dataset
+WHERE Country = 'India'
+GROUP BY Category; 
+
+
+
+SELECT Country, SUM(Visitors) AS TotalVisitors
+FROM tourism_dataset 
+GROUP BY Country
+ORDER BY TotalVisitors DESC; 
+
+
+
+SELECT Category , SUM(Visitors) AS TotalVisitors
+FROM tourism_dataset
+WHERE Country = 'France'
+GROUP BY Category
+ORDER BY TotalVisitors DESC; 
+
+
+
+SELECT * 
+from tourism_dataset
+WHERE Country = 'China'
+  AND Visitors >= 500000
+  AND Category = 'Cultural'
+  AND Accommodation_Available = 'No'
+ORDER BY Visitors DESC; 
+
+
+
+SELECT * 
+FROM tourism_dataset
+WHERE Country = 'Egypt'
+  AND Category = 'Cultural'
+ORDER BY Rating DESC; 
+
+
+
+SELECT Country, Category, SUM(Accommodation_Available = 'Yes') AS TotalAccomodationPoints
+FROM tourism_dataset
+GROUP BY Country, Category; 
+
+
+
+SELECT Country, Category, SUM(Accommodation_Available = 'No') AS TotalAccomodationPoints
+FROM tourism_dataset
+GROUP BY Country, Category; 
+
+
+
+SELECT Country, SUM(Accommodation_Available = 'Yes') AS TotalAccomodationPoints
+FROM tourism_dataset
+GROUP BY Country;  
